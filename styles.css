@@ -79,12 +79,25 @@ h2 {
 }
 
 input {
-	display: block;
-	width: 60%;
 	margin: 20px 20%;
 	border-color: #000;
 	padding: 10px;
 	border-radius: 2px;
+}
+
+.input-col input {
+	width: 60%;
+	display: block;
+}
+
+.gender-input input {
+	display: inline-block;
+	margin: 0;
+	margin-left: 35px;
+}
+
+.gender-input h3 {
+	display: inline-block;
 }
 
 a {
