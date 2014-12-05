@@ -2,21 +2,10 @@
 
 angular.module('madLibs', [])
 	.controller('mainCtrl', function($scope){
-		$scope.person_name = 'Person name';
-		$scope.job_title = 'Job title';
-		$scope.tedious_task = 'Tedious task';
-		$scope.dirty_task = 'Dirty task';
-		$scope.celebrity = 'Celebrity';
-		$scope.useless_skill = 'Useless skill';
-		$scope.adjective = 'Adjective';
-		$scope.obnoxious_celebrity = 'Obnoxious celebrity';
-		$scope.huge_number = 'Huge number';
-		
-		//Defaults gender to female
-		$scope.gender = 'F';
-		$scope.sPronoun = 'she';
-		$scope.pPronoun = 'her';
-		$scope.oPronoun = 'her';
+		$scope.resultsActive = false;
+
+		// Default gender to male
+		$scope.gender = 'M';
 
 		$scope.$watch('gender', function(newGender, oldGender){
 			if (!newGender) return;
@@ -32,4 +21,23 @@ angular.module('madLibs', [])
 				$scope.oPronoun = 'her';
 			}
 		});
+
+		$scope.genLib = function() {
+			if ($scope.wordInput.$invalid) {
+				if ($scope.wordInput.huge_number.$invalid) {
+					alert('"Huge number" must be digits, like 99999');
+					return;
+				}
+				alert('Fill out the red blanks to continue.');
+			}
+			else {
+				$scope.resultsActive = true;
+			}
+		}
+
+		$scope.resetLib = function() {
+			$scope.person_name = $scope.job_title = $scope.tedious_task = $scope.dirty_task = $scope.celebrity = $scope.useless_skill = $scope.adjective = $scope.obnoxious_celebrity = $scope.huge_number = '';
+			$scope.wordInput.$setPristine();
+			$scope.resultsActive = false;
+		}
 	});

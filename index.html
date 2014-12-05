@@ -15,31 +15,39 @@
 			<h1>Automate This!</h1>
 		</div>
 	</header>
-	<section class="word-input clearfix">
-		<h2>Provide the following words:</h2>
-		<div class="input-col">
-			<input type="text" ng-model="person_name" placeholder="Person name">
-			<input type="text" ng-model="job_title" placeholder="Job title">
-			<input type="text" ng-model="tedious_task" placeholder="Tedious task">
-		</div>
-		<div class="input-col">
-			<input type="text" ng-model="dirty_task" placeholder="Dirty task">
-			<input type="text" ng-model="celebrity" placeholder="Celebrity">
-			<input type="text" ng-model="useless_skill" placeholder="Useless skill">
-		</div>
-		<div class="input-col">
-			<input type="text" ng-model="adjective" placeholder="Adjective">
-			<input type="text" ng-model="obnoxious_celebrity" placeholder="Obnoxious celebrity">
-			<input type="text" ng-model="huge_number" placeholder="Huge number">
-		</div>
-		<div class="gender-input">
-			<h3>What is {{person_name}}'s gender? (M for male, F for female): </h3>
-			<input type="text" ng-model="gender" placeholder="M or F">
-		</div>
+	<section class="word-input clearfix" ng-hide="resultsActive">
+		<form name="wordInput" ng-submit="genLib()" novalidate>
+			<div class="clearfix">
+				<h2>Provide the following words:</h2>
+				<div class="input-col">
+					<input type="text" ng-model="person_name" placeholder="Person name" required>
+					<input type="text" ng-model="job_title" placeholder="Job title" required>
+					<input type="text" ng-model="tedious_task" placeholder="Tedious task" required>
+				</div>
+				<div class="input-col">
+					<input type="text" ng-model="dirty_task" placeholder="Dirty task" required>
+					<input type="text" ng-model="celebrity" placeholder="Celebrity" required>
+					<input type="text" ng-model="useless_skill" placeholder="Useless skill" required>
+				</div>
+				<div class="input-col">
+					<input type="text" ng-model="adjective" placeholder="Adjective" required>
+					<input type="text" ng-model="obnoxious_celebrity" placeholder="Obnoxious celebrity" required>
+					<input type="number" name="huge_number" ng-model="huge_number" placeholder="Huge number" required>
+				</div>
+			</div>
+			<div class="gender-input">
+				<h3>What is {{person_name || 'your character'}}'s gender? </h3>
+				<input type="radio" ng-model="gender" value="M" required> Male
+				<input type="radio" ng-model="gender" value="F" required> Female
+			</div>
+			<hr>
+			<input class="switch-btn" type="submit" value="Generate My Mad Lib">
+		</form>
 	</section>
-	<section class="output">
+	<section class="output" ng-show="resultsActive">
 		<p><u>{{person_name}}</u> was a <u>{{job_title}}</u> who loved technology. Although {{sPronoun}} loved parts of {{pPronoun}} job, {{sPronoun}} absolutely hated  <u>{{tedious_task}}</u> and <u>{{dirty_task}}</u>. So, <u>{{person_name}}</u> met with {{pPronoun}} life mentor <u>{{celebrity}}</u> who told {{oPronoun}} to learn how to <u>{{useless_skill}}</u> with Thinkful. Thinkful didn't offer a course on <u>{{useless_skill}}</u> so {{sPronoun}} studied programming instead.</p>
 		<p>What a great decision! With {{pPronoun}} new skills, <u>{{person_name}}</u> built a(n) <u>{{adjective}}</u> robot named <u>{{obnoxiuous_celbertity}}</u> that not only loved <u>{{dirty_task}}</u> but did it <u>{{huge_number}}</u> faster.</p>
+		<input class="switch-btn" type="submit" value="Start over" ng-click="resetLib()">
 	</section>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>

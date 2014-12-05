@@ -69,6 +69,7 @@ p {
 
 .word-input {
 	padding: 30px 65px;
+	padding-bottom: 10px;
 	border: 2px solid #000;
 	border-top: none;
 }
@@ -93,7 +94,13 @@ input {
 .gender-input input {
 	display: inline-block;
 	margin: 0;
-	margin-left: 35px;
+	margin-left: 30px;
+}
+
+input.switch-btn {
+	float: right;
+	margin-right: 0;
+	background: #fff;
 }
 
 .gender-input h3 {
@@ -108,8 +115,13 @@ a {
 	font-size: 2em;
 }
 
+hr {
+	border-style: solid;
+}
 
-
+.ng-submitted .ng-invalid {
+	border: 3px solid red;
+}
 
 
 
