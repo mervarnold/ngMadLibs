@@ -1,21 +1,19 @@
 'use strict';
 
-angular.module('madLibs', [])
+angular.module('madLibs', ['ngAnimate'])
 	.controller('mainCtrl', function($scope){
 		$scope.resultsActive = false;
 
-		// Default gender to male
+		// Default gender input to male
 		$scope.gender = 'M';
 
-		$scope.$watch('gender', function(newGender, oldGender){
-			if (!newGender) return;
-			if (newGender == oldGender) return;
-			if (newGender == 'M') {
+		$scope.$watch('gender', function(gender){
+			if (gender == 'M') {
 				$scope.sPronoun = 'he';
 				$scope.pPronoun = 'his';
 				$scope.oPronoun = 'him';
 			}
-			else if (newGender == 'F') {
+			else if (gender == 'F') {
 				$scope.sPronoun = 'she';
 				$scope.pPronoun = 'her';
 				$scope.oPronoun = 'her';
